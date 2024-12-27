@@ -149,3 +149,43 @@ function performAction(action: string | number, role: Role) {
     console.log("Perform CRUD");
   }
 }
+
+
+// Todo Generic TYPES
+
+let roles : Array<Role>;
+
+roles = ["admin", "manager"]
+
+type DataStorage<T> = {
+    storage: T[],
+    add: (data: T)=> void;
+}
+
+let textStorage: DataStorage<string> = {
+    storage: [],
+    add(data){
+        this.storage.push
+    }
+}
+
+
+// todo T -> placeholder for generic types
+
+let roleStorage: DataStorage<Role> = {
+  storage: [],
+  add(data) {
+    this.storage.push;
+  },
+};
+
+// todo -> generic type in functions
+function merge<T, U>(a: T, b: U){
+    return {
+        ...a,
+        ...b
+    }
+}
+
+const newUser = merge<{name: string}, {age: number}>({name: 'Musili'}, {age: 23});
+
