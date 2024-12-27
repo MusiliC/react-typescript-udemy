@@ -13,7 +13,6 @@ let userId: string | number;
 userId = "myId";
 userId = 3;
 
-
 // using custom type
 
 type userType = {
@@ -32,8 +31,7 @@ type userType = {
 //   id: string | number;
 // };
 
-let user: userType
-
+let user: userType;
 
 user = {
   name: "John Doe",
@@ -74,68 +72,64 @@ function calculateTwo(a: number, b: number, calcFn: Addfn) {
 
 calculate(2, 4, add);
 
-
 // interface keyword
 
-interface Credentials{
-    password: string;
-    email: string;
+interface Credentials {
+  password: string;
+  email: string;
 }
 
-let creds; CredentialsContainer;
+let creds;
+CredentialsContainer;
 
 creds = {
- password: "my",
- email: "email@email.com"
+  password: "my",
+  email: "email@email.com",
+};
+
+interface Credentials {
+  mode: string;
 }
 
-interface Credentials{
-    mode: string
+class AuthCredentials implements Credentials {
+  mode: string;
+  password: string;
+  email: string;
 }
 
-class AuthCredentials implements Credentials{
-    mode: string;
-    password: string;
-    email: string;
-    
-}
+function login(credentials: Credentials) {}
 
-function login(credentials: Credentials){
+login(new AuthCredentials());
 
-}
-
-login(new AuthCredentials())
-
-// creating merged types -> 
+// creating merged types ->
 type Admin = {
-    permissions: string[]
-}
+  permissions: string[];
+};
 
 type AppUser = {
-    userName: string
-}
+  userName: string;
+};
 
 type AdminAppUser = Admin & AppUser;
 
 let admin: AdminAppUser;
 
 admin = {
-    permissions: ["dev"],
-    userName: "Cee"
-}
+  permissions: ["dev"],
+  userName: "Cee",
+};
 
 // merging with interface
 
 interface Admin2 {
   permissions: string[];
-};
+}
 
 interface AppUser2 {
   userName: string;
-};
+}
 
-interface  AdminAppUser2 extends Admin2, AppUser2{}
-
+interface AdminAppUser2 extends Admin2, AppUser2 {}
 
 let admin2: AdminAppUser2;
 
@@ -143,3 +137,15 @@ admin2 = {
   permissions: ["dev"],
   userName: "Cee",
 };
+
+type Role = "admin" | "user" | "manager";
+
+// Literal Types && Type Guards
+
+let role: Role;
+
+function performAction(action: string | number, role: Role) {
+  if (role === "admin" && typeof action === "string") {
+    console.log("Perform CRUD");
+  }
+}
