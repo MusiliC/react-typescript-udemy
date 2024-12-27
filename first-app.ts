@@ -88,3 +88,58 @@ creds = {
  password: "my",
  email: "email@email.com"
 }
+
+interface Credentials{
+    mode: string
+}
+
+class AuthCredentials implements Credentials{
+    mode: string;
+    password: string;
+    email: string;
+    
+}
+
+function login(credentials: Credentials){
+
+}
+
+login(new AuthCredentials())
+
+// creating merged types -> 
+type Admin = {
+    permissions: string[]
+}
+
+type AppUser = {
+    userName: string
+}
+
+type AdminAppUser = Admin & AppUser;
+
+let admin: AdminAppUser;
+
+admin = {
+    permissions: ["dev"],
+    userName: "Cee"
+}
+
+// merging with interface
+
+interface Admin2 {
+  permissions: string[];
+};
+
+interface AppUser2 {
+  userName: string;
+};
+
+interface  AdminAppUser2 extends Admin2, AppUser2{}
+
+
+let admin2: AdminAppUser2;
+
+admin2 = {
+  permissions: ["dev"],
+  userName: "Cee",
+};
