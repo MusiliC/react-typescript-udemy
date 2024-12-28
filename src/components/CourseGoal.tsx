@@ -7,16 +7,20 @@ import { FC, type PropsWithChildren, type ReactNode } from "react";
 // children: ReactNode
 // }
 
-type CourseGoalTypeProps = PropsWithChildren<{title: string}>
+type CourseGoalTypeProps = PropsWithChildren<{
+  id: number
+  title: string;
+  onDelete: (id: number) => void;
+}>;
 
-function CourseGoal({ title,  children }: CourseGoalTypeProps) {
+function CourseGoal({ title,onDelete,id,  children }: CourseGoalTypeProps) {
   return (
     <article className="">
       <div>
         <h2>{title}</h2>
         <p>{children}</p>
       </div>
-      <button>Delete</button>
+      <button onClick={() => onDelete(id)}>Delete</button>
     </article>
   );
 }
