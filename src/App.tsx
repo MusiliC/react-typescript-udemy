@@ -1,11 +1,12 @@
-import Input from "./components/Input";
+import Button from "./components/Button";
+
 
 function App() {
   return (
-    <main>
-      <Input label="Your Name" id="name" type="text"/>
-      <Input label="Your Age" id="age" type="number"/>
-    </main>
+    <p>
+      <Button el="button" >A button</Button>
+      <Button el="anchor" href="google.com"/>
+    </p>
   );
 }
 
